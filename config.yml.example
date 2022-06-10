@@ -1,0 +1,9 @@
+http:
+  name: application
+  host: 0.0.0.0
+  port: 8081
+  global_prefix: main
+
+logger:
+  level: info # allowed logger level panic|fatal|error|warn,warning|info|debug|trace
+  format: text # logger support text or json format
