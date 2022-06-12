@@ -10,7 +10,7 @@ import (
 )
 
 func (a *App) bootstrapHttp() error {
-	http := node.NewHttpFiber(node.HttpFiberConfig{
+	http := node.NewHttpFiber(node.HttpEchoConfig{
 		FiberConfig: fiber.Config{
 			DisableStartupMessage: true,
 			JSONEncoder:           json.Marshal,

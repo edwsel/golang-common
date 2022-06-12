@@ -28,7 +28,7 @@ func (m *Mysql) Name() string {
 }
 
 func (m *Mysql) Run() error {
-	db, err := sql.Open("mysql", makeDSN(m.Config))
+	db, err := sql.Open("mysql", mysqlMakeDSN(m.Config))
 
 	if err != nil {
 		return err
@@ -43,7 +43,7 @@ func (m *Mysql) Close() error {
 	return m.DB.Close()
 }
 
-func makeDSN(config MysqlConfig) string {
+func mysqlMakeDSN(config MysqlConfig) string {
 	return fmt.Sprintf(
 		"%s:%s@%s:%d/%s?parseTime=true",
 		config.Username,
