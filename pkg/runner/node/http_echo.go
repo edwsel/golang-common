@@ -32,5 +32,7 @@ func (h *HttpEcho) Run() error {
 }
 
 func (h *HttpEcho) Close() error {
-	return h.Shutdown(context.Background())
+	_ = h.Shutdown(context.Background())
+
+	return nil
 }
