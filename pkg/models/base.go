@@ -11,7 +11,7 @@ type BaseIdByUUID struct {
 }
 
 type BaseIdByInt64 struct {
-	Id *uint64 `gorm:"column:id;type:BIGINT;autoIncrement;primaryKey"`
+	Id *uint64 `gorm:"column:id;type:BIGINT;primaryKey;autoIncrementq"`
 }
 
 type Time struct {
