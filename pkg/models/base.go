@@ -6,8 +6,12 @@ import (
 	"time"
 )
 
-type Base struct {
+type BaseIdByUUID struct {
 	Id uuid.UUID `gorm:"column:id;type:UUID;default:UUID();primaryKey"`
+}
+
+type BaseIdByInt64 struct {
+	Id uuid.UUID `gorm:"column:id;type:BIGINT;autoIncrement;primaryKey"`
 }
 
 type Time struct {
