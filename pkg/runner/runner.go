@@ -3,8 +3,8 @@ package runner
 import (
 	"context"
 	"errors"
+	"github.com/edwsel/golang-common/pkg/runner/node"
 	"github.com/sirupsen/logrus"
-	"gitlab.com/a-system/golang-common/pkg/runner/node"
 	"golang.org/x/sync/errgroup"
 	"os"
 	"os/signal"

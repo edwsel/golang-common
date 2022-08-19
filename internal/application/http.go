@@ -2,11 +2,11 @@ package application
 
 import (
 	"encoding/json"
+	"github.com/edwsel/golang-common/internal/action"
+	"github.com/edwsel/golang-common/pkg/runner/node"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/etag"
-	"gitlab.com/a-system/golang-common/internal/action"
-	"gitlab.com/a-system/golang-common/pkg/runner/node"
 )
 
 func (a *App) bootstrapHttp() error {

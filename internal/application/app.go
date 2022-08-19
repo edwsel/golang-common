@@ -1,11 +1,11 @@
 package application
 
 import (
+	"github.com/edwsel/golang-common/internal/config"
+	"github.com/edwsel/golang-common/internal/provider"
+	"github.com/edwsel/golang-common/pkg/configure"
+	"github.com/edwsel/golang-common/pkg/runner"
 	"github.com/sirupsen/logrus"
-	"gitlab.com/a-system/golang-common/internal/config"
-	"gitlab.com/a-system/golang-common/internal/provider"
-	"gitlab.com/a-system/golang-common/pkg/configure"
-	"gitlab.com/a-system/golang-common/pkg/runner"
 	"os"
 )
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gitlab.com/a-system/golang-common/internal/application"
+	"github.com/edwsel/golang-common/internal/application"
 )
 
 func main() {

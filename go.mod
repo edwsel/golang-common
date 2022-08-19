@@ -1,4 +1,4 @@
-module gitlab.com/a-system/golang-common
+module github.com/edwsel/golang-common
 
 go 1.18
 

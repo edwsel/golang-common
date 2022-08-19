@@ -1,8 +1,8 @@
 package action
 
 import (
+	"github.com/edwsel/golang-common/internal/provider"
 	"github.com/gofiber/fiber/v2"
-	"gitlab.com/a-system/golang-common/internal/provider"
 	"time"
 )
 
