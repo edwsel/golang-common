@@ -2,11 +2,11 @@ package node
 
 import (
 	"fmt"
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-type GormMysqlConfig struct {
+type GormPostgresqlConfig struct {
 	Host     string
 	Port     uint
 	Username string
@@ -14,28 +14,27 @@ type GormMysqlConfig struct {
 	Database string
 }
 
-type GormMysql struct {
+type GormPostgresql struct {
 	*gorm.DB
-	Config GormMysqlConfig
+	Config GormPostgresqlConfig
 	Models []interface{}
 }
 
-func NewGormMysql(config GormMysqlConfig) *GormMysql {
-	return &GormMysql{
+func NewGormPostgresql(config GormPostgresqlConfig) *GormPostgresql {
+	return &GormPostgresql{
 		Config: config,
 	}
 }
 
-func (g *GormMysql) Name() string {
+func (g *GormPostgresql) Name() string {
 	return "gorm.mysql"
 }
 
-func (g *GormMysql) Run() error {
-	dsn := gormMysqlMakeDSN(g.Config)
+func (g *GormPostgresql) Run() error {
+	dsn := gormPostgresqlMakeDSN(g.Config)
 
-	db, err := gorm.Open(mysql.New(mysql.Config{
-		DSN:               dsn,
-		DefaultStringSize: 256,
+	db, err := gorm.Open(postgres.New(postgres.Config{
+		DSN: dsn,
 	}), &gorm.Config{})
 
 	if err != nil {
@@ -48,7 +47,7 @@ func (g *GormMysql) Run() error {
 
 }
 
-func (g *GormMysql) Close() error {
+func (g *GormPostgresql) Close() error {
 	sqlDB, err := g.DB.DB()
 
 	if err != nil {
@@ -58,11 +57,11 @@ func (g *GormMysql) Close() error {
 	return sqlDB.Close()
 }
 
-func (g *GormMysql) AddModelForAutoMigration(model interface{}) {
+func (g *GormPostgresql) AddModelForAutoMigration(model interface{}) {
 	g.Models = append(g.Models, model)
 }
 
-func gormMysqlMakeDSN(config GormMysqlConfig) string {
+func gormPostgresqlMakeDSN(config GormPostgresqlConfig) string {
 	return fmt.Sprintf(
 		"%s:%s@tcp(%s:%d)/%s?parseTime=true",
 		config.Username,
