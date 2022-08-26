@@ -15,10 +15,10 @@ type BaseIdByInt64 struct {
 }
 
 type Time struct {
-	CreatedAt time.Time `gorm:"column:created_at;type:datetime(6);not null;autoCreateTime:nano"`
-	UpdatedAt time.Time `gorm:"column:updated_at;type:datetime(6);not null;autoUpdateTime:nano"`
+	CreatedAt time.Time `gorm:"column:created_at;not null;autoCreateTime:nano"`
+	UpdatedAt time.Time `gorm:"column:updated_at;not null;autoUpdateTime:nano"`
 }
 
 type SoftDelete struct {
-	DeletedAt gorm.DeletedAt `gorm:"column:deleted_at;type:datetime(6)"`
+	DeletedAt gorm.DeletedAt `gorm:"column:deleted_at;"`
 }
