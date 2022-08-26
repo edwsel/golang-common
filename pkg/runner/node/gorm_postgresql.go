@@ -34,7 +34,8 @@ func (g *GormPostgresql) Run() error {
 	dsn := gormPostgresqlMakeDSN(g.Config)
 
 	db, err := gorm.Open(postgres.New(postgres.Config{
-		DSN: dsn,
+		DSN:                  dsn,
+		PreferSimpleProtocol: true, // disables implicit prepared statement usage
 	}), &gorm.Config{})
 
 	if err != nil {
@@ -63,11 +64,11 @@ func (g *GormPostgresql) AddModelForAutoMigration(model interface{}) {
 
 func gormPostgresqlMakeDSN(config GormPostgresqlConfig) string {
 	return fmt.Sprintf(
-		"%s:%s@tcp(%s:%d)/%s?parseTime=true",
+		"host=%s user=%s password=%s dbname=%s port=%d sslmode=disable TimeZone=UTC",
+		config.Host,
 		config.Username,
 		config.Password,
-		config.Host,
-		config.Port,
 		config.Database,
+		config.Port,
 	)
 }
