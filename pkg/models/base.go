@@ -7,7 +7,7 @@ import (
 )
 
 type BaseIdByUUID struct {
-	Id uuid.UUID `gorm:"column:id;type:UUID;default:UUID();primaryKey"`
+	Id uuid.UUID `gorm:"column:id;type:UUID;primaryKey"`
 }
 
 type BaseIdByInt64 struct {
