@@ -2,8 +2,10 @@ package node
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"github.com/labstack/echo/v4"
+	"net/http"
 )
 
 type HttpEchoConfig struct {
@@ -28,11 +30,15 @@ func (h *HttpEcho) Name() string {
 }
 
 func (h *HttpEcho) Run() error {
-	return h.Echo.Start(fmt.Sprintf("%s:%d", h.Config.Host, h.Config.Port))
+	err := h.Echo.Start(fmt.Sprintf("%s:%d", h.Config.Host, h.Config.Port))
+
+	if err != nil && errors.Is(err, http.ErrServerClosed) {
+		return nil
+	}
+
+	return err
 }
 
 func (h *HttpEcho) Close() error {
-	_ = h.Shutdown(context.Background())
-
-	return nil
+	return h.Shutdown(context.Background())
 }
